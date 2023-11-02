@@ -1,0 +1,72 @@
+@rota = users
+@idUser = 2
+
+###
+# @name test
+GET {{url}}
+
+###
+# @name Create
+POST {{url}}/{{rota}}/create
+Content-Type: application/json
+
+{
+    "name": "bruno",
+    "email": "bruno@email.com",
+    "password": "123123"
+}
+
+###
+# @name ShowAll
+GET {{url}}/{{rota}}/showAll
+Authorization: bearer {{token}}
+
+###
+# @name ShowUser
+GET {{url}}/{{rota}}/{{idUser}}
+Authorization: bearer {{token}}
+
+###
+# @name DeleteUser
+DELETE {{url}}/{{rota}}/{{idUser}}
+Authorization: bearer {{token}}
+
+###
+# @name UpdateUser
+PUT {{url}}/{{rota}}
+Authorization: bearer {{token}}
+Content-Type: application/json
+
+{
+    "name": "bruno velho",
+    "email": "bruno@email.com",
+    "password": "123"
+}
+
+###
+# @name updatePassword
+@id = 3
+PUT {{url}}/{{rota}}/{{id}} HTTP/1.1
+content-type: application/json
+
+{
+    "password": "12345",
+    "old_password": "12345"
+}
+
+###
+
+PATCH {{url}}/{{rota}}/avatar
+Authorization: bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+tittle
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="avatar.png"
+Content-Type: image/png
+
+< ./file/avatar.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

@@ -1,0 +1,44 @@
+@rota = movies
+@idUser = 1
+
+###
+# @name test
+GET {{url}}/{{rota}}
+
+###
+# @name Create
+POST {{url}}/{{rota}}/create
+Authorization: bearer {{token}}
+Content-Type: application/json
+
+{
+    "title": "Destinos à Deriva",
+    "description": "Grávida, sozinha e perdida no mar, uma mulher que está presa em um container tenta sobreviver após fugir de um país totalitário e destruído.",
+    "rating": 3.3,
+    "tags": ["drama", "netflix", "suspense"]
+}
+
+###
+# @name ShowAll
+GET {{url}}/{{rota}}/showAll
+Authorization: bearer {{token}}
+
+###
+# @name Index
+GET {{url}}/{{rota}}
+Authorization: bearer {{token}}
+
+###
+# @name Delete
+DELETE {{url}}/{{rota}}/2
+Authorization: bearer {{token}}
+
+###
+# @name Update
+PUT {{url}}/{{rota}}/2
+Authorization: bearer {{token}}
+Content-Type: application/json
+
+{
+    "rating": 3.3
+}
